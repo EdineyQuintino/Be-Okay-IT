@@ -1,0 +1,30 @@
+{
+  "name": "be-okay-it",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdineyQuintino/Be-Okay-IT.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EdineyQuintino/Be-Okay-IT/issues"
+  },
+  "homepage": "https://github.com/EdineyQuintino/Be-Okay-IT#readme",
+  "dependencies": {
+    "@prisma/client": "^4.3.1",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19",
+    "prisma": "^4.3.1"
+  }
+}
