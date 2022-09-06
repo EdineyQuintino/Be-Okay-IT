@@ -1,7 +1,5 @@
 const connection = require('../database/prismaClient');
-
-
-
+const schema = require('../validations/userValidation');
 module.exports = {
 async index(req,res){
     try {
@@ -16,9 +14,8 @@ async create(req,res){
     try {
         const {name,cnpj,data_fundacao,valor_hora} = req.body;
         const data = new Date(data_fundacao);
-
-        
-        
+   
+       
         const company = await connection.company.create({
             data: {
                 name,
