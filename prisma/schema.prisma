@@ -24,7 +24,7 @@ model Company {
 model Calculation {
   id          String   @id @default(uuid())
   cnpj        Company  @relation(fields: [cnpj_id], references: [cnpj])
-  cnpj_id     String   
+  cnpj_id     String   @unique @db.VarChar(14)
   data_inicio DateTime @db.Date()
   data_fim    DateTime @db.Date()
 
