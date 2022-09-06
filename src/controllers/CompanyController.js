@@ -1,5 +1,5 @@
 const connection = require('../database/prismaClient');
-const schema = require('../validations/userValidation');
+
 module.exports = {
 async index(req,res){
     try {
