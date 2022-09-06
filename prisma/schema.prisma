@@ -11,12 +11,22 @@ datasource db {
 }
 
 model Company {
-  id String @id @default(uuid())
-  name String @db.VarChar(50)
-  cnpj String @unique @db.VarChar(14)
-  data_fundacao DateTime @db.Date()
-  valor_hora Decimal 	@db.Decimal(9,2)
+  id            String        @id @default(uuid())
+  name          String        @db.VarChar(50)
+  cnpj          String        @unique @db.VarChar(14)
+  data_fundacao DateTime      @db.Date()
+  valor_hora    Decimal       @db.Decimal(9, 2)
+  Calculation   Calculation[]
 
   @@map("company")
+}
 
+model Calculation {
+  id          String   @id @default(uuid())
+  cnpj        Company  @relation(fields: [cnpj_id], references: [cnpj])
+  cnpj_id     String   
+  data_inicio DateTime @db.Date()
+  data_fim    DateTime @db.Date()
+
+  @@map("calculation")
 }
