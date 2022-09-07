@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,12 +8,12 @@ datasource db {
 }
 
 model Company {
-  id            String        @id @default(uuid())
-  name          String        @db.VarChar(50)
-  cnpj          String        @unique @db.VarChar(14)
-  data_fundacao DateTime      @db.Date()
-  valor_hora    Decimal       @db.Decimal(9, 2)
-  Calculation   Calculation[]
+  id              String        @id @default(uuid())
+  name            String        @db.VarChar(50)
+  cnpj            String        @unique @db.VarChar(14)
+  date_foundation DateTime      @db.Date()
+  value_hour      Decimal       @db.Decimal(9, 2)
+  Calculation     Calculation[]
 
   @@map("company")
 }
@@ -25,8 +22,8 @@ model Calculation {
   id          String   @id @default(uuid())
   cnpj        Company  @relation(fields: [cnpj_id], references: [cnpj])
   cnpj_id     String   @unique @db.VarChar(14)
-  data_inicio DateTime @db.Date()
-  data_fim    DateTime @db.Date()
+  date_start  DateTime @db.Date()
+  date_theend DateTime @db.Date()
 
   @@map("calculation")
 }

@@ -3,19 +3,18 @@ const connection = require('../database/prismaClient');
 module.exports = {
     async create(req, res) {
         try {
-            const { cnpj_id, data_inicio, data_fim } = req.body;
+            const { cnpj_id, date_start, date_theend } = req.body;
+            const dateStart = new Date(date_start);
+            const dateTheend = new Date(date_theend);
 
-            const dataInicio = new Date(data_inicio);
-            const dataFim = new Date(data_fim);
-
-            const calculation = await connection.Calculation.create({
+            const calculation = await connection.calculation.create({
                 data: {
                     cnpj_id,
-                    data_inicio: dataInicio,
-                    data_fim: dataFim,
+                    date_start: dateStart,
+                    date_theend: dateTheend,
                 }
             });
-            const result = await connection.$queryRaw`SELECT TIMESTAMPDIFF(DAY,data_inicio,data_fim-8)*8*valor_hora as 'Calculo' from calculation join company on calculation.cnpj_id = company.cnpj where cnpj_id = ${cnpj_id};`
+            const result = await connection.$queryRaw`SELECT TIMESTAMPDIFF(DAY,date_start,date_theend-8)*8*value_hour as 'Calculo' from calculation join company on calculation.cnpj_id = company.cnpj where cnpj_id = ${cnpj_id};`
 
             return res.status(200).json({ calculation, result });
         } catch (error) {

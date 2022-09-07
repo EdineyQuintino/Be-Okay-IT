@@ -1,14 +1,13 @@
 const express = require('express');
 
-const CompanyController = require('../controllers/CompanyController');
+const companyController = require('../controllers/companyController');
 
 const validation = require('../middlewares/validationMiddleware');
 const schema = require('../validations/companyValidation')
 
 const routes = express.Router();
 
-routes.get('/company', CompanyController.index);
-routes.post('/company', validation(schema), CompanyController.create);
-
+routes.get('/company', companyController.index);
+routes.post('/company', validation(schema), companyController.create);
 
 module.exports = routes;
