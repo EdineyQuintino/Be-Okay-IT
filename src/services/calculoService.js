@@ -2,8 +2,8 @@ const connection = require('../database/prismaClient');
 
 async function calculo(body) {
     const { cnpj, data_inicio, data_fim } = body;
-    const diffInMs = new Date(data_fim) - new Date(data_inicio)
-    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+    const dataMes = new Date(data_fim) - new Date(data_inicio)
+    const dataDias = dataMes / (1000 * 60 * 60 * 24);
 
     const calculo = {
         data: {
@@ -13,7 +13,7 @@ async function calculo(body) {
         }
     };
 
-    const result = await connection.$queryRaw`SELECT Concat('R$ ',format((valor_hora)*${diffInDays - 8}*8,2,'de_DE')) 'Calculo' from Empresa where cnpj = ${cnpj};`
+    const result = await connection.$queryRaw`SELECT Concat('R$ ',format((valor_hora)*${dataDias-8}*8,2,'de_DE')) 'Calculo' from Empresa where cnpj = ${cnpj};`
     return result;
 };
 
