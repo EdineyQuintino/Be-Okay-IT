@@ -1,6 +1,6 @@
 🚀 Instalando Be-Okay-IT
 
-Projeto utilizando Nodejs, Mysql, Prisma, Rest/RestFull
+## Projeto utilizando Nodejs, Mysql, Prisma, Rest/RestFull
 
 ## Para instalar o Be-Okay-IT, siga estas etapas:
 
