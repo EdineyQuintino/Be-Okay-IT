@@ -14,6 +14,7 @@ Apos a instalação do npm i utilizar o comando:
 
 ## npx prisma generate
 
+Agora Cria o arquivo .env e configura conforme exemplo,
 Para configuração e utilização do banco de dados deixei setado oque e necessario para configurar o seu .env
 
 ## Arquivo .env.example
