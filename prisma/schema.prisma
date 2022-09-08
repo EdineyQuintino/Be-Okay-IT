@@ -7,23 +7,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Company {
-  id              String        @id @default(uuid())
-  name            String        @db.VarChar(50)
-  cnpj            String        @unique @db.VarChar(14)
-  date_foundation DateTime      @db.Date()
-  value_hour      Decimal       @db.Decimal(9, 2)
-  Calculation     Calculation[]
-
-  @@map("company")
+model Feriado {
+  Id   Int      @id @default(autoincrement())
+  data DateTime @db.Date
 }
 
-model Calculation {
-  id          String   @id @default(uuid())
-  cnpj        Company  @relation(fields: [cnpj_id], references: [cnpj])
-  cnpj_id     String   @unique @db.VarChar(14)
-  date_start  DateTime @db.Date()
-  date_theend DateTime @db.Date()
-
-  @@map("calculation")
+model Empresa {
+  id            Int       @id @default(autoincrement())
+  cnpj          String?   @unique(map: "cnpj") @db.VarChar(14)
+  nome          String?   @db.VarChar(50)
+  data_fundacao DateTime? @db.Date
+  valor_hora    Decimal?  @db.Decimal(9, 2)
 }
