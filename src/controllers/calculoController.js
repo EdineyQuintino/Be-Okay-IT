@@ -1,4 +1,3 @@
-const connection = require("../database/prismaClient");
 const { validationCalculo } = require("../validations/calculoValidation");
 const serviceCalculo = require("../services/calculoService");
 
