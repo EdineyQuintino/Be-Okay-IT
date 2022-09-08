@@ -1,13 +1,12 @@
-const connection = require("../database/prismaClient");
 const { validationEmpresa } = require("../validations/empresaValidation");
 const serviceEmpresa = require("../services/empresaService");
 
 module.exports = {
   async index(req, res) {
     try {
-      const empresa = await connection.empresa.findMany();
+      const empresas = await serviceEmpresa.buscarEmpresas();
 
-      return res.status(200).json(empresa);
+      return res.status(200).json(empresas);
     } catch (error) {
       return res.status(400).json({ message: error.message });
     }

@@ -3,10 +3,10 @@ const serviceCalculo = require("../services/calculoService");
 
 module.exports = {
 
-  async post(req, res) {
+  async valorHora(req, res) {
     try {
       await validationCalculo(req.body);
-      const calculo = await serviceCalculo.calculo(req.body);
+      const calculo = await serviceCalculo.calculoValorTotal(req.body);
 
       return res.status(200).json(calculo);
     } catch (error) {
