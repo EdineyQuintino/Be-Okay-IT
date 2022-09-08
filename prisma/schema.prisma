@@ -14,8 +14,8 @@ model Feriado {
 
 model Empresa {
   id            Int       @id @default(autoincrement())
-  cnpj          String?   @unique(map: "cnpj") @db.VarChar(14)
-  nome          String?   @db.VarChar(50)
-  data_fundacao DateTime? @db.Date
-  valor_hora    Decimal?  @db.Decimal(9, 2)
+  cnpj          String   @unique @db.VarChar(14)
+  nome          String   @db.VarChar(50)
+  data_fundacao DateTime @db.Date
+  valor_hora    Decimal  @db.Decimal(9, 2)
 }

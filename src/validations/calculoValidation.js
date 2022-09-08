@@ -7,10 +7,10 @@ const schemaCalculo = yup.object().shape({
         .matches(/^[0-9]+$/, "CNPJ deve conter apenas numeros")
         .length(14, 'CNPJ deve conter 14 caracteres Numericos'),
     data_inicio: yup
-        .date(new Date())
+        .date()
         .required('Data deve conter Ano, Mês e Dia'),
     data_fim: yup
-        .date(new Date())
+        .date()
         .required('Data deve conter Ano, Mês e Dia'),
 });
 

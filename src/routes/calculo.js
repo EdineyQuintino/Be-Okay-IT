@@ -8,6 +8,6 @@ const calculoController = require('../controllers/calculoController');
 const routes = express.Router();
 
 //routes.get('/calculculo', calculoController.index);
-routes.post('/calculation', calculoController.create);
+routes.post('/calculo', calculoController.post);
 
 module.exports = routes;

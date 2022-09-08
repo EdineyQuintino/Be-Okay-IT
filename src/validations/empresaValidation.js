@@ -12,7 +12,7 @@ const schemaEmpresa = yup.object().shape({
         .max(50, 'Nome de no maximo de 50 caracteres')
         .required('Nome da Empresa '),
     data_fundacao: yup
-        .date(/^[0-9]+$/, "Data deve ser no formato yyy-mm-dd")
+        .date("Data deve ser no formato yyy-mm-dd")
         .required('Data e Obrigatoria'),
     valor_hora: yup
         .number()
