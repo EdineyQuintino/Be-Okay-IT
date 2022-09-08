@@ -13,9 +13,7 @@ async function calculo(body) {
         }
     };
 
-    //const result = await connection.$queryRaw`SELECT valor_hora*${diffInDays - 8}*8 as 'Calculo' from Empresa where cnpj = ${cnpj};`
-    const result = await connection.$queryRaw`SELECT Concat('R$ ',format((valor_hora)*${diffInDays-8}*8,2,'de_DE')) 'Calculo' from Empresa where cnpj = ${cnpj};`
- 
+    const result = await connection.$queryRaw`SELECT Concat('R$ ',format((valor_hora)*${diffInDays - 8}*8,2,'de_DE')) 'Calculo' from Empresa where cnpj = ${cnpj};`
     return result;
 };
 
