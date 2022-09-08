@@ -2,20 +2,20 @@ const connection = require('../database/prismaClient');
 
 async function calculo(body) {
     const { cnpj, data_inicio, data_fim } = body;
-    const dataInicio = new Date(data_inicio);
-    const dataFim = new Date(data_fim);
-
+    const diffInMs = new Date(data_fim) - new Date(data_inicio)
+    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+   
     const calculo = {
         data: {
             cnpj,
-            data_inicio: dataInicio,
-            data_fim: dataFim,
+            data_inicio,
+            data_fim,
         }
     };
-    /*console.log(calculo)
-    //const result = await connection.$queryRaw`SELECT TIMESTAMPDIFF(DAY,${data_inicio},${data_fim}-8)*8*valor_hora as 'Calculo' from Empresa where cnpj = ${cnpj};`
-    const result = await connection.$queryRaw`SELECT valor_hora from Empresa where cnpj = ${cnpj};`*/
-    return cal = TIMESTAMPDIFF(DAY,data_inicio,data_fim-8)*8;  
-}
+
+    const result = await connection.$queryRaw`SELECT valor_hora*${diffInDays-8}*8 as 'Calculo' from Empresa where cnpj = ${cnpj};`
+
+    return result;
+};
 
 module.exports = { calculo };
