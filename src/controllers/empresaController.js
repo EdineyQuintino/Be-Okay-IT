@@ -11,6 +11,7 @@ module.exports = {
       return res.status(400).json({ message: error.message });
     }
   },
+  
   async create(req, res) {
     try {
       await validationEmpresa(req.body);

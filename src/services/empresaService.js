@@ -1,17 +1,23 @@
 const empresaModel = require('../models/empresaModel');
 
-async function insertEmpresa(body) {
-    const { cnpj, nome, data_fundacao, valor_hora } = body;
-    const date = new Date(data_fundacao)
+async function insertEmpresa(empresa) {
+    const { cnpj, nome, data_fundacao, valor_hora } = empresa;
+    const date = new Date(data_fundacao);
 
-    const empresa = await empresaModel.createEmpresa({
+    const empresaExiste = await empresaModel.buscarEmpresaPorCnpj(cnpj);
+    if (empresaExiste) {
+        throw { message: "CNPJ ja Existe" };
+    };
+
+    const novaEmpresa = await empresaModel.createEmpresa({
         cnpj,
         nome,
         data_fundacao: date,
         valor_hora
     });
-    return empresa;
+    return novaEmpresa;
 };
+
 async function buscarEmpresas() {
     const empresas = await empresaModel.buscarEmpresas();
 
