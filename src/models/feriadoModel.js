@@ -1,8 +1,8 @@
-const connection = require("../database/prismaClient");
+const connection = require('../database/prismaClient')
 
-async function buscarFeriados() {
-    const feriados = await connection.feriado.findMany();
-    return feriados;
+async function buscarFeriados () {
+  const feriados = await connection.feriado.findMany()
+  return feriados
 }
 
-module.exports = { buscarFeriados };
+module.exports = { buscarFeriados }
