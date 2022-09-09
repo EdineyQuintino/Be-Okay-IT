@@ -1,8 +1,19 @@
+const cnpjValida = require('js-cnpj-validation'); 
 const empresaModel = require('../models/empresaModel');
 
+function validaCnpj(cnpj){
+cnpjValida.isValidCNPJ(cnpj)
+return  
+    }
+       
 async function insertEmpresa(empresa) {
     const { cnpj, nome, data_fundacao, valor_hora } = empresa;
     const date = new Date(data_fundacao);
+     
+    const cnpjValido = validaCnpj(cnpj);
+    if(cnpjValido){
+        throw { message: "CNPJ invalido"}
+    }
 
     const empresaExiste = await empresaModel.buscarEmpresaPorCnpj(cnpj);
     if (empresaExiste) {

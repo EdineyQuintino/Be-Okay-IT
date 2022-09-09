@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "dev":"nodemon src/server.js "
+    "dev": "nodemon src/server.js "
   },
   "repository": {
     "type": "git",
@@ -20,8 +20,10 @@
   "homepage": "https://github.com/EdineyQuintino/Be-Okay-IT#readme",
   "dependencies": {
     "@prisma/client": "^4.3.1",
+    "date-fns": "^2.29.2",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
+    "js-cnpj-validation": "^1.2.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

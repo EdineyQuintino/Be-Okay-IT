@@ -13,6 +13,8 @@ const schemaEmpresa = yup.object().shape({
         .required('Nome da Empresa '),
     data_fundacao: yup
         .date("Data deve ser no formato yyy-mm-dd")
+        .min(new Date("1900-01-01"), "Data da fundação deve ser maior que 1900-01-01")
+        .max(new Date(), `Data da fundação deve ser menor que data atual - ${new Date().toLocaleString()}`)
         .required('Data e Obrigatoria'),
     valor_hora: yup
         .number()
